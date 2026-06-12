@@ -1,4 +1,5 @@
 import { AlertTriangle, ExternalLink } from 'lucide-react'
+import { asset } from '../lib/asset'
 import { Card, CardContent, CardHeader, CardTitle, PageHeader, Button } from '../components/ui'
 
 const IMAGES = [
@@ -26,7 +27,7 @@ export default function Annexes() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {IMAGES.map(([f, c]) => (
           <Card key={f} className="overflow-hidden">
-            <img src={`/img/${f}`} alt={`Synthèse marché ${c}`} loading="lazy" className="w-full block" />
+            <img src={asset(`img/${f}`)} alt={`Synthèse marché ${c}`} loading="lazy" className="w-full block" />
             <div className="px-5 py-3 border-t border-slate-100 text-xs font-mono text-slate-500">{c} — synthèse visuelle de marché (illustratif)</div>
           </Card>
         ))}
@@ -36,7 +37,7 @@ export default function Annexes() {
         <CardHeader><CardTitle>Dashboard HTML autonome (version « double-clic »)</CardTitle></CardHeader>
         <CardContent className="flex items-center justify-between gap-4 flex-wrap">
           <p className="text-sm text-slate-500 flex-1">Version statique d'origine, ouvrable sans serveur. La présente plateforme React en est l'évolution.</p>
-          <Button variant="outline" as="a" href="/files/04_Dashboard_demande_tourisme.html" target="_blank" rel="noreferrer">Ouvrir le HTML <ExternalLink className="w-4 h-4" /></Button>
+          <Button variant="outline" as="a" href={asset("files/04_Dashboard_demande_tourisme.html")} target="_blank" rel="noreferrer">Ouvrir le HTML <ExternalLink className="w-4 h-4" /></Button>
         </CardContent>
       </Card>
     </div>

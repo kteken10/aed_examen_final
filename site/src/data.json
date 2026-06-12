@@ -1,5 +1,4 @@
 {
- "generated": "pipeline",
  "countries": [
   "France",
   "Germany",
@@ -2651,6 +2650,81 @@
    "family": "Baseline"
   }
  ],
+ "tscv": [
+  {
+   "m": "Régression linéaire",
+   "mean": 5.27,
+   "std": 1.66
+  },
+  {
+   "m": "Baseline métier",
+   "mean": 7.39,
+   "std": 2.05
+  },
+  {
+   "m": "Random Forest",
+   "mean": 7.91,
+   "std": 2.27
+  },
+  {
+   "m": "Naïve (m-1)",
+   "mean": 8.86,
+   "std": 2.12
+  },
+  {
+   "m": "Saisonnière naïve (m-12)",
+   "mean": 9.05,
+   "std": 2.11
+  },
+  {
+   "m": "SARIMA",
+   "mean": 9.24,
+   "std": 4.07
+  },
+  {
+   "m": "SARIMAX (exo. Fourier)",
+   "mean": 11.77,
+   "std": 3.86
+  }
+ ],
+ "split3": [
+  {
+   "m": "Régression linéaire",
+   "val": 5.1,
+   "test": 5.61
+  },
+  {
+   "m": "Baseline métier",
+   "val": 7.02,
+   "test": 7.75
+  },
+  {
+   "m": "Saisonnière naïve (m-12)",
+   "val": 8.49,
+   "test": 9.61
+  },
+  {
+   "m": "Random Forest",
+   "val": 8.62,
+   "test": 9.37
+  },
+  {
+   "m": "SARIMAX (exo. Fourier)",
+   "val": 8.91,
+   "test": 12.78
+  },
+  {
+   "m": "Naïve (m-1)",
+   "val": 11.31,
+   "test": 11.31
+  },
+  {
+   "m": "SARIMA",
+   "val": 12.02,
+   "test": 9.5
+  }
+ ],
+ "best_val": "Régression linéaire",
  "gold_country": [
   {
    "country": "Spain",

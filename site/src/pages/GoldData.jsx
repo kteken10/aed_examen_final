@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { asset } from '../lib/asset'
 import { Download } from 'lucide-react'
 import { Card, CardHeader, CardTitle, PageHeader, Button, Badge } from '../components/ui'
 
@@ -12,7 +13,7 @@ export default function GoldData({ data }) {
       <PageHeader
         title="Data Gold — base analytique fiabilisée"
         description={`Deux grains : pays (demande annuelle, momentum, prévision) et pays × destination (${data.stats.n_destinations} lignes, 8 variables dérivées dont le score ajusté météo).`}
-        actions={<Button variant="accent" as="a" href="/files/GOLD_DATA_tourisme.xlsx" download><Download className="w-4 h-4" /> GOLD .xlsx</Button>}
+        actions={<Button variant="accent" as="a" href={asset("files/GOLD_DATA_tourisme.xlsx")} download><Download className="w-4 h-4" /> GOLD .xlsx</Button>}
       />
       <Badge tone="neutral">5 feuilles : README · Quality_Log · Gold_Country · Gold_Destination · Data_Dictionary</Badge>
 

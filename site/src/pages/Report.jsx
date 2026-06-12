@@ -1,4 +1,5 @@
 import { Download } from 'lucide-react'
+import { asset } from '../lib/asset'
 import { Card, CardContent, CardHeader, CardTitle, PageHeader, Button } from '../components/ui'
 
 function Section({ n, title, children }) {
@@ -16,7 +17,7 @@ export default function Report({ data }) {
       <PageHeader
         title="Rapport de management de projet"
         description="Du besoin métier à la décision : choix techniques, arbitrages, limites et recommandations. La valeur tient moins au modèle qu'à la rigueur de l'audit — savoir quelles données refuser est la première décision métier."
-        actions={<Button variant="accent" as="a" href="/files/05_Rapport_Management_Projet.pptx" download><Download className="w-4 h-4" /> Rapport .pptx</Button>}
+        actions={<Button variant="accent" as="a" href={asset("files/05_Rapport_Management_Projet.pptx")} download><Download className="w-4 h-4" /> Rapport .pptx</Button>}
       />
 
       <Section n="1" title="Le besoin métier — deux questions de natures différentes">

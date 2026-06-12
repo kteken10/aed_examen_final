@@ -1,0 +1,19 @@
+# Node / Vite (le site est rebâti par la CI)
+node_modules/
+site/node_modules/
+site/dist/
+dist/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS / éditeur
+.DS_Store
+Thumbs.db
+.vscode/
+*.log
+
+# Mémoire locale de l'agent (ne pas publier)
+memory/

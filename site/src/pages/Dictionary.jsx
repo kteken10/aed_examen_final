@@ -1,4 +1,5 @@
 import { Download } from 'lucide-react'
+import { asset } from '../lib/asset'
 import { Card, PageHeader, Button, Badge } from '../components/ui'
 
 export default function Dictionary({ data }) {
@@ -9,7 +10,7 @@ export default function Dictionary({ data }) {
       <PageHeader
         title="Dictionnaire de données"
         description={`${rows.length} variables documentées — définition métier, type, unité, source, règle qualité, data owner et points de vigilance. Grain : (pays, destination) et (pays, mois).`}
-        actions={<Button variant="accent" as="a" href="/files/03_Dictionnaire_de_donnees.xlsx" download><Download className="w-4 h-4" /> Dictionnaire .xlsx</Button>}
+        actions={<Button variant="accent" as="a" href={asset("files/03_Dictionnaire_de_donnees.xlsx")} download><Download className="w-4 h-4" /> Dictionnaire .xlsx</Button>}
       />
       <div className="flex items-center gap-2">
         <Badge tone="accent">{rows.length} variables</Badge>
