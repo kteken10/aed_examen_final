@@ -34,6 +34,6 @@ Les données sources sont dans le même dossier ; le notebook régénère lui-m�
 ## 🔑 Points méthodologiques
 - **Deux niveaux de granularité** : prévision au niveau **pays** (série temporelle) vs recommandation au niveau **destination** (scoring — aucun modèle).
 - **Split temporel** strict (jamais aléatoire) + **prévision multi-pas**.
-- **Comparaison de deux familles** : statistique native (**SARIMA, SARIMAX**) vs ML (régression linéaire, Random Forest) + baselines.
+- **Comparaison de plusieurs approches de prévision** : baselines + famille statistique (**ETS/Holt-Winters, SARIMA, SARIMAX**) + **régression dynamique** de série temporelle (retards + saisonnalité), benchmark Random Forest.
 - **Validation croisée adaptée aux séries temporelles** (Time Series Cross-Validation, 12 plis) + **split train / validation / test**.
 - **Qualité & gouvernance** : 14 anomalies tracées, 3 sources non fiables écartées (on refuse plutôt qu'on impute).

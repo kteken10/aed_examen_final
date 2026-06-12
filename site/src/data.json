@@ -451,7 +451,7 @@
    "d2024": 118.2,
    "yoy": 2.1,
    "fc": 124.6,
-   "winner": "Régression linéaire"
+   "winner": "Régression dynamique (retards + saisonnalité)"
   },
   "Japan": {
    "d2022": 134.2,
@@ -459,7 +459,7 @@
    "d2024": 131.0,
    "yoy": -3.5,
    "fc": 141.6,
-   "winner": "Régression linéaire"
+   "winner": "Régression dynamique (retards + saisonnalité)"
   },
   "Morocco": {
    "d2022": 106.9,
@@ -467,7 +467,7 @@
    "d2024": 103.7,
    "yoy": -1.9,
    "fc": 112.8,
-   "winner": "Régression linéaire"
+   "winner": "Régression dynamique (retards + saisonnalité)"
   },
   "Portugal": {
    "d2022": 87.7,
@@ -475,7 +475,7 @@
    "d2024": 84.3,
    "yoy": -3.1,
    "fc": 93.7,
-   "winner": "Régression linéaire"
+   "winner": "Régression dynamique (retards + saisonnalité)"
   },
   "Spain": {
    "d2022": 84.0,
@@ -491,7 +491,7 @@
    "d2024": 117.2,
    "yoy": -1.6,
    "fc": 126.5,
-   "winner": "Régression linéaire"
+   "winner": "Régression dynamique (retards + saisonnalité)"
   }
  },
  "dest": {
@@ -2594,12 +2594,12 @@
  },
  "metrics": [
   {
-   "m": "Régression linéaire",
+   "m": "Régression dynamique (retards + saisonnalité)",
    "mae": 5.61,
    "rmse": 7.04,
    "mape": 6.1,
    "r2": 0.904,
-   "family": "ML"
+   "family": "Reg. temporelle"
   },
   {
    "m": "Baseline métier",
@@ -2608,6 +2608,14 @@
    "mape": 8.5,
    "r2": 0.842,
    "family": "Baseline"
+  },
+  {
+   "m": "ETS (Holt-Winters)",
+   "mae": 7.77,
+   "rmse": 9.51,
+   "mape": 8.4,
+   "r2": 0.824,
+   "family": "Statistique"
   },
   {
    "m": "SARIMAX (exo. Fourier)",
@@ -2652,7 +2660,7 @@
  ],
  "tscv": [
   {
-   "m": "Régression linéaire",
+   "m": "Régression dynamique (retards + saisonnalité)",
    "mean": 5.27,
    "std": 1.66
   },
@@ -2660,6 +2668,11 @@
    "m": "Baseline métier",
    "mean": 7.39,
    "std": 2.05
+  },
+  {
+   "m": "ETS (Holt-Winters)",
+   "mean": 7.58,
+   "std": 2.14
   },
   {
    "m": "Random Forest",
@@ -2689,7 +2702,7 @@
  ],
  "split3": [
   {
-   "m": "Régression linéaire",
+   "m": "Régression dynamique (retards + saisonnalité)",
    "val": 5.1,
    "test": 5.61
   },
@@ -2697,6 +2710,11 @@
    "m": "Baseline métier",
    "val": 7.02,
    "test": 7.75
+  },
+  {
+   "m": "ETS (Holt-Winters)",
+   "val": 8.38,
+   "test": 7.77
   },
   {
    "m": "Saisonnière naïve (m-12)",
@@ -2724,7 +2742,7 @@
    "test": 9.5
   }
  ],
- "best_val": "Régression linéaire",
+ "best_val": "Régression dynamique (retards + saisonnalité)",
  "gold_country": [
   {
    "country": "Spain",
@@ -3005,10 +3023,10 @@
   {
    "#": 1,
    "Source": "05_cible_recommandation.csv",
-   "Anomalie detectee": "Aucune donnee - message du correcteur \"decider, pas copier\"",
-   "Type": "Piege / meta",
+   "Anomalie detectee": "Fichier en texte libre : aucune donnee structuree ni variable cible",
+   "Type": "Donnees / structure",
    "Severite": "CRITIQUE",
-   "Decision / Traitement": "Aucune cible : reco raisonnee sous contraintes, non supervisee"
+   "Decision / Traitement": "Pas de cible -> recommandation non supervisee (scoring raisonne sous contraintes)"
   },
   {
    "#": 2,
@@ -3122,7 +3140,7 @@
   "n_dict": 20,
   "n_quality": 14,
   "n_sources": 6,
-  "best_model": "Régression linéaire",
+  "best_model": "Régression dynamique",
   "best_mae": 5.61
  }
 }

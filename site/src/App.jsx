@@ -19,7 +19,7 @@ const SECTIONS = [
   ] },
   { label: 'Restitution', items: [
     { id: 'rep', label: 'Rapport final', icon: ScrollText, C: Report },
-    { id: 'annx', label: 'Annexes', icon: Images, C: Annexes },
+    { id: 'annx', label: 'Analyse visuelle', icon: Images, C: Annexes },
     { id: 'ref', label: 'Références', icon: Code2, C: References },
   ] },
 ]

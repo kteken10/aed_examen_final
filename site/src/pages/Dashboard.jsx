@@ -126,8 +126,8 @@ export default function Dashboard({ data }) {
       {/* Models */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <Card className="lg:col-span-2 overflow-hidden">
-          <CardHeader><CardTitle>Deux familles comparées — prévision multi-pas (juil.–déc. 2024)</CardTitle>
-            <CardDescription>SARIMAX bat SARIMA, mais la régression globale (mutualise 8 séries courtes) bat la famille statistique univariate.</CardDescription>
+          <CardHeader><CardTitle>Approches de prévision comparées — multi-pas (juil.–déc. 2024)</CardTitle>
+            <CardDescription>Dans la famille statistique de prévision, ETS/Holt-Winters mène ; la régression dynamique (série temporelle, entraînée sur les 8 séries) gagne en mutualisant l’information.</CardDescription>
           </CardHeader>
           <table className="w-full text-sm">
             <thead className="bg-slate-50 text-xs uppercase tracking-wider text-slate-500">
@@ -142,7 +142,7 @@ export default function Dashboard({ data }) {
             </thead>
             <tbody>
               {data.metrics.map(m => {
-                const best = m.m.includes('linéaire')
+                const best = m.m.includes('dynamique')
                 return (
                   <tr key={m.m} className={'border-t border-slate-100 ' + (best ? 'bg-accent-50/40' : 'hover:bg-slate-50')}>
                     <td className={'px-5 py-3 ' + (best ? 'font-semibold text-slate-900' : 'text-slate-700')}>{m.m}{best ? ' ✓' : ''}</td>
@@ -162,13 +162,13 @@ export default function Dashboard({ data }) {
           <CardHeader><CardTitle>MAE par méthode</CardTitle></CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={data.metrics.map(m => ({ name: m.m.replace(/ \(.*\)/, ''), mae: m.mae, best: m.m.includes('linéaire') }))} margin={{ top: 4, right: 8, left: -20, bottom: 0 }}>
+              <BarChart data={data.metrics.map(m => ({ name: m.m.replace(/ \(.*\)/, ''), mae: m.mae, best: m.m.includes('dynamique') }))} margin={{ top: 4, right: 8, left: -20, bottom: 0 }}>
                 <CartesianGrid stroke="#EEEDE6" vertical={false} />
                 <XAxis dataKey="name" tick={{ ...AX, fontSize: 9 }} interval={0} angle={-30} textAnchor="end" height={70} tickLine={false} axisLine={{ stroke: '#E2E8F0' }} />
                 <YAxis tick={AX} tickLine={false} axisLine={false} />
                 <Tooltip contentStyle={{ fontFamily: 'IBM Plex Mono', fontSize: 12, borderRadius: 8, border: '1px solid #E2E8F0' }} />
                 <Bar dataKey="mae" radius={[4, 4, 0, 0]}>
-                  {data.metrics.map((m, i) => <Cell key={i} fill={m.m.includes('linéaire') ? '#84cc16' : '#94a3b8'} />)}
+                  {data.metrics.map((m, i) => <Cell key={i} fill={m.m.includes('dynamique') ? '#84cc16' : '#94a3b8'} />)}
                 </Bar>
               </BarChart>
             </ResponsiveContainer>

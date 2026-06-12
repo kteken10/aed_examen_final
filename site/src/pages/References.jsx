@@ -7,8 +7,8 @@ const GITHUB_URL = 'https://github.com/kteken10/aed_examen_final'
 const METHODO = [
   ['Type de problème', 'Prévision série temporelle (pays) + scoring (destination)', 'Deux granularités distinctes — ne pas confondre'],
   ['Validation', 'Split temporel + multi-pas + Time Series CV (12 plis) + split 3-way', 'Sélection sur validation, test intact ; pas de fuite'],
-  ['Familles comparées', 'Statistique (SARIMA/SARIMAX) vs ML (LinReg/RF)', 'Comparaison exigée — choix justifié par les métriques'],
-  ['Modèle retenu', 'Régression linéaire globale', 'Mutualise 8 séries courtes ; bat SARIMA univariate'],
+  ['Approches comparées', 'Baselines, ETS/Holt-Winters, SARIMA, SARIMAX, régression dynamique', 'Plusieurs méthodes du domaine temporel — choix justifié par les métriques'],
+  ['Modèle retenu', 'Régression dynamique (retards + saisonnalité), globale', 'ETS mène la famille classique ; la régression mutualise les 8 séries et passe devant'],
   ['Priorisation marchés', 'Momentum YoY (pas le niveau d’indice)', 'Indices non comparables entre pays'],
   ['Contrainte météo', 'Score ajusté (bad −12, average −4 si connu)', 'Opérationnalise la contrainte sans biaiser les manquants'],
 ]
@@ -37,7 +37,7 @@ export default function References({ data }) {
           <CardContent>
             <ul className="text-sm text-slate-700 space-y-2">
               <li><b>Data / ML</b> : Python, pandas, scikit-learn, statsmodels (SARIMAX)</li>
-              <li><b>Modèles</b> : régression linéaire, Random Forest, SARIMA, SARIMAX</li>
+              <li><b>Modèles</b> : ETS/Holt-Winters, SARIMA, SARIMAX, régression dynamique (retards/saisonnalité), Random Forest</li>
               <li><b>Restitution</b> : React, Vite, Tailwind 3, Recharts, lucide-react</li>
               <li><b>Livrables</b> : openpyxl (GOLD .xlsx), python-pptx (rapport)</li>
               <li><b>Déploiement</b> : GitHub Pages (CI) — statique</li>
@@ -79,7 +79,7 @@ export default function References({ data }) {
               </thead>
               <tbody>
                 {data.tscv.map(r => {
-                  const best = r.m.includes('linéaire')
+                  const best = r.m.includes('dynamique')
                   return (
                     <tr key={r.m} className={'border-t border-slate-100 ' + (best ? 'bg-accent-50/40' : 'hover:bg-slate-50')}>
                       <td className={'px-5 py-3 ' + (best ? 'font-semibold text-slate-900' : 'text-slate-700')}>{r.m}{best ? ' ✓' : ''}</td>

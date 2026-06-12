@@ -32,7 +32,7 @@ export default function Report({ data }) {
       <Section n="2" title="Les données & leur qualité — on ne suppose jamais qu'une donnée est correcte">
         <p>{data.stats.n_sources} sources, {data.stats.n_quality} anomalies, 4 critiques, 3 sources écartées.</p>
         <ul>
-          <li><b>05_cible</b> : message du correcteur (« décider, pas copier ») → pas de variable cible.</li>
+          <li><b>05_cible</b> : fichier en texte libre, sans données structurées → pas de variable cible (recommandation non supervisée).</li>
           <li><b>06_campaign</b> : status incohérent (FAIL à ROI 220k, TOP à 1 %) → écarté.</li>
           <li><b>03_reviews</b> : sentiment décorrélé du score (corr 0,03) → exclu.</li>
           <li><b>04_facteurs</b> : séparateur « ; », 61 % de jointure perdue → météo/vol optionnels.</li>
@@ -53,9 +53,9 @@ export default function Report({ data }) {
         <p>Cible : demand_index mensuel par pays. Évaluation en <b>prévision multi-pas</b> (train ≤ juin 2024, test juil.–déc. 2024) :</p>
         <ul>
           <li><b>Statistique native</b> : SARIMA et SARIMAX (par pays).</li>
-          <li><b>ML supervisé</b> : régression linéaire et Random Forest (globaux).</li>
+          <li><b>ML supervisé</b> : régression dynamique (retards + saisonnalité) et Random Forest (globaux).</li>
         </ul>
-        <p><b>SARIMAX (MAE 8,2) bat SARIMA (9,6)</b>, mais les deux sont dominés par la <b>régression linéaire globale (MAE {data.stats.best_mae}, 5/8 pays)</b> — mutualiser 8 séries courtes bat un modèle univariate. <b>Choix après comparaison, pas par défaut.</b></p>
+        <p><b>SARIMAX (MAE 8,2) bat SARIMA (9,6)</b>, mais les deux sont dominés par la <b>régression dynamique globale (MAE {data.stats.best_mae}, 5/8 pays)</b> — mutualiser 8 séries courtes bat un modèle univariate. <b>Choix après comparaison, pas par défaut.</b></p>
       </Section>
 
       <Section n="5" title="Les arbitrages assumés">
@@ -80,7 +80,7 @@ export default function Report({ data }) {
       </Section>
 
       <Section n="8" title="Recommandations & gouvernance">
-        <p>Contrôle qualité à l'ingestion (casse, clés, jointures), <b>dater</b> les facteurs externes, <b>re-collecter</b> avis/campagnes selon protocole, <b>versionner</b> la GOLD. Décider, pas copier : chaque choix est tracé et défendable.</p>
+        <p>Contrôle qualité à l'ingestion (casse, clés, jointures), <b>dater</b> les facteurs externes, <b>re-collecter</b> avis/campagnes selon protocole, <b>versionner</b> la GOLD. Chaque choix est tracé et défendable.</p>
       </Section>
     </div>
   )
