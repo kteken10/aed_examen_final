@@ -115,6 +115,37 @@ export default function References({ data }) {
         </div>
       </Card>
 
+      <Card className="overflow-hidden">
+        <CardHeader>
+          <CardTitle>Source externe — API de tourisme (World Bank)</CardTitle>
+          <CardDescription>Enrichissement au niveau pays : arrivées de touristes internationaux (indicateur ST.INT.ARVL), gratuit, sans clé, avec fallback hors-ligne pour la reproductibilité.</CardDescription>
+        </CardHeader>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+          <div className="overflow-x-auto border-r border-slate-100">
+            <table className="w-full text-sm">
+              <thead className="bg-slate-50 text-xs uppercase tracking-wider text-slate-500">
+                <tr><th className="px-5 py-3 text-left font-semibold">Pays</th><th className="px-5 py-3 text-right font-semibold">Arrivées intl (M, ~2020)</th></tr>
+              </thead>
+              <tbody>
+                {(data.api_arrivals || []).map(r => (
+                  <tr key={r.country} className="border-t border-slate-100 hover:bg-slate-50">
+                    <td className="px-5 py-3 font-medium text-slate-900">{r.country}</td>
+                    <td className="px-5 py-3 text-right tabular-nums font-mono text-slate-700">{r.m}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="p-5 space-y-3 text-sm text-slate-700">
+            <p><b className="text-slate-900">Pourquoi au niveau pays.</b> Les destinations sont anonymisées (City_X) : aucune API ne peut les enrichir individuellement. Les pays, eux, sont réels → enrichissement légitime via API.</p>
+            <p className="text-slate-500">Usage : <b>contexte / validation croisée</b> du classement des marchés (France, Spain, Italy, USA = gros volumes). Pas une comparaison en valeur absolue avec le demand_index (indice synthétique).</p>
+            <div className="rounded-xl bg-slate-50 border border-slate-200 px-3 py-2.5 text-[13px]">
+              <b>Architecture de sourcing (production).</b> Villes : attractivité/POI via <b>Amadeus / OpenTripMap</b>. Facteurs externes (météo, prix vol) via API dédiée. Demande : signaux marché / API analytics.
+            </div>
+          </div>
+        </div>
+      </Card>
+
       <Card>
         <CardHeader><CardTitle>Lignage des données</CardTitle></CardHeader>
         <CardContent>

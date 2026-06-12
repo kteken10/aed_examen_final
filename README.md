@@ -36,4 +36,5 @@ Les données sources sont dans le même dossier ; le notebook régénère lui-m�
 - **Split temporel** strict (jamais aléatoire) + **prévision multi-pas**.
 - **Comparaison de plusieurs approches de prévision** : baselines + famille statistique (**ETS/Holt-Winters, SARIMA, SARIMAX**) + **régression dynamique** de série temporelle (retards + saisonnalité), benchmark Random Forest.
 - **Validation croisée adaptée aux séries temporelles** (Time Series Cross-Validation, 12 plis) + **split train / validation / test**.
+- **Sourcing externe** : enrichissement par **API de tourisme** (World Bank — arrivées internationales par pays) avec fallback hors-ligne ; architecture documentée pour les villes (Amadeus/OpenTripMap).
 - **Qualité & gouvernance** : 14 anomalies tracées, 3 sources non fiables écartées (on refuse plutôt qu'on impute).

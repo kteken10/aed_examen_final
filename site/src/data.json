@@ -2817,6 +2817,40 @@
    "signal": "momentum -"
   }
  ],
+ "api_arrivals": [
+  {
+   "country": "France",
+   "m": 117.1
+  },
+  {
+   "country": "USA",
+   "m": 45.0
+  },
+  {
+   "country": "Italy",
+   "m": 38.4
+  },
+  {
+   "country": "Spain",
+   "m": 36.4
+  },
+  {
+   "country": "Germany",
+   "m": 12.4
+  },
+  {
+   "country": "Portugal",
+   "m": 4.2
+  },
+  {
+   "country": "Japan",
+   "m": 4.1
+  },
+  {
+   "country": "Morocco",
+   "m": 2.8
+  }
+ ],
  "dictionary": [
   {
    "Nom technique": "country",
